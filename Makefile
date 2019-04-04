@@ -16,6 +16,16 @@ geth:
 	@echo "Done building."
 	@echo "Run \"$(GOBIN)/geth\" to launch geth."
 
+puppeth:
+	build/env.sh go run build/ci.go install ./cmd/puppeth
+	@echo "Done building."
+	@echo "Run \"$(GOBIN)/puppeth\" to launch puppeth."
+
+bootnode:
+	build/env.sh go run build/ci.go install ./cmd/bootnode
+	@echo "Done building."
+	@echo "Run \"$(GOBIN)/bootnode\" to launch bootnode."
+
 swarm:
 	build/env.sh go run build/ci.go install ./cmd/swarm
 	@echo "Done building."
