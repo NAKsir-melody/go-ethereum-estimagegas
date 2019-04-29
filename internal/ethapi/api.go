@@ -811,6 +811,7 @@ func DoEstimateGas(ctx context.Context, b Backend, args CallArgs, blockNr rpc.Bl
 		hi  uint64
 		cap uint64
 	)
+    fmt.Printf("====%d===", blockNr)
 	if args.Gas != nil && uint64(*args.Gas) >= params.TxGas {
 		hi = uint64(*args.Gas)
 	} else {
@@ -859,6 +860,13 @@ func DoEstimateGas(ctx context.Context, b Backend, args CallArgs, blockNr rpc.Bl
 // given transaction against the current pending block.
 func (s *PublicBlockChainAPI) EstimateGas(ctx context.Context, args CallArgs) (hexutil.Uint64, error) {
 	return DoEstimateGas(ctx, s.b, args, rpc.PendingBlockNumber, s.b.RPCGasCap())
+}
+func (s *PublicBlockChainAPI) EstimateGas2(ctx context.Context, args CallArgs) ([]hexutil.Uint64, error) {
+    results := make([]hexutil.Uint64, 3)
+	results[0], _ = DoEstimateGas(ctx, s.b, args, rpc.PendingBlockNumber, s.b.RPCGasCap())
+	results[1], _ = DoEstimateGas(ctx, s.b, args, rpc.PendingBlockNumber-1, s.b.RPCGasCap())
+	results[2], _ = DoEstimateGas(ctx, s.b, args, rpc.PendingBlockNumber-2, s.b.RPCGasCap())
+    return results, nil
 }
 
 // ExecutionResult groups all structured logs emitted by the EVM

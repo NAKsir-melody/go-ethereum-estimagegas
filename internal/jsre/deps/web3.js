@@ -5401,6 +5401,14 @@ var methods = function () {
         outputFormatter: utils.toDecimal
     });
 
+    var estimateGas2 = new Method({
+        name: 'estimateGas2',
+        call: 'eth_estimateGas2',
+        params: 1,
+        inputFormatter: [formatters.inputCallFormatter],
+        outputFormatter: utils.toDecimal
+    });
+
     var compileSolidity = new Method({
         name: 'compile.solidity',
         call: 'eth_compileSolidity',
