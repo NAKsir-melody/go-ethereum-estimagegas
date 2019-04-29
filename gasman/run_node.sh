@@ -1,0 +1,1 @@
+./../build/bin/geth --port 30303 --networkid 33 --nodiscover --maxpeers 0 --datadir ./gasmannode --rpc --rpcport 8080 --rpcapi "db,eth,net,web3,personal,ws,account,miner" --rpcaddr "127.0.0.1" --rpccorsdomain "*" --allow-insecure-unlock console

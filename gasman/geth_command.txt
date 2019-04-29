@@ -1,0 +1,4 @@
+personal.newAccount("admin")
+eth.getBalance(eth.accounts[0])
+miner.start(1)
+miner.stop()
